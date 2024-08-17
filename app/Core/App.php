@@ -6,6 +6,6 @@ class App
 {
     public function run()
     {
-        echo 'App is running';
+        var_dump($this->name);
     }
 }
