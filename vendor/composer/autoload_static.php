@@ -60,6 +60,10 @@ class ComposerStaticInitd751713988987e9331980363e24189ce
             'Psr\\Container\\' => 14,
             'Psr\\Clock\\' => 10,
         ),
+        'L' => 
+        array (
+            'League\\Container\\' => 17,
+        ),
         'I' => 
         array (
             'Illuminate\\Support\\' => 19,
@@ -187,11 +191,15 @@ class ComposerStaticInitd751713988987e9331980363e24189ce
         array (
             0 => __DIR__ . '/..' . '/psr/clock/src',
         ),
+        'League\\Container\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/league/container/src',
+        ),
         'Illuminate\\Support\\' => 
         array (
-            0 => __DIR__ . '/..' . '/illuminate/macroable',
+            0 => __DIR__ . '/..' . '/illuminate/collections',
             1 => __DIR__ . '/..' . '/illuminate/conditionable',
-            2 => __DIR__ . '/..' . '/illuminate/collections',
+            2 => __DIR__ . '/..' . '/illuminate/macroable',
             3 => __DIR__ . '/..' . '/illuminate/support',
         ),
         'Illuminate\\Pipeline\\' => 
