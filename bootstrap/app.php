@@ -1,18 +1,14 @@
 <?php
 
 use App\Core\App;
-use League\Container\Container;
+use App\Core\Container;
 
 require '../vendor/autoload.php';
 
-$container = new Container();
+$container = Container::getInstance();
 $container->delegate(new \League\Container\ReflectionContainer());
 
 $container->addServiceProvider(new \App\Providers\AppServiceProvider());
-
-var_dump($container->get(\App\Core\Example::class));
-
-die();
 
 $app = new App();
 // register routes
