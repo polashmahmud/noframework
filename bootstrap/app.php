@@ -14,9 +14,6 @@ $container->delegate(new \League\Container\ReflectionContainer());
 $container->addServiceProvider(new ConfigServiceProvider());
 $container->addServiceProvider(new AppServiceProvider());
 
-var_dump($container->get(Config::class)->get('app.name'));
-die();
-
 $app = new App();
 // register routes
 $app->run();
