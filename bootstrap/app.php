@@ -3,13 +3,17 @@
 use App\Config\Config;
 use App\Core\App;
 use App\Core\Container;
-use App\Providers\AppServiceProvider;
 use App\Providers\ConfigServiceProvider;
+use Dotenv\Dotenv;
+use League\Container\ReflectionContainer;
 
 require '../vendor/autoload.php';
 
+$dotEnv = Dotenv::createImmutable(__DIR__ . '/../');
+$dotEnv->load();
+
 $container = Container::getInstance();
-$container->delegate(new \League\Container\ReflectionContainer());
+$container->delegate(new ReflectionContainer());
 $container->addServiceProvider(new ConfigServiceProvider());
 
 $config = $container->get(Config::class);
