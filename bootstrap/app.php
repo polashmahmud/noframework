@@ -10,9 +10,13 @@ require '../vendor/autoload.php';
 
 $container = Container::getInstance();
 $container->delegate(new \League\Container\ReflectionContainer());
-
 $container->addServiceProvider(new ConfigServiceProvider());
-$container->addServiceProvider(new AppServiceProvider());
+
+$config = $container->get(Config::class);
+
+foreach ($config->get('app.providers') as $provider) {
+    $container->addServiceProvider(new $provider);
+}
 
 $app = new App();
 // register routes
