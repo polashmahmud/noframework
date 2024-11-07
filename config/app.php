@@ -6,6 +6,7 @@ return [
     'debug' => env('APP_DEBUG'),
 
     'providers' => [
-        \App\Providers\AppServiceProvider::class
+        \App\Providers\AppServiceProvider::class,
+        \App\Providers\RequestServiceProvider::class
     ]
 ];

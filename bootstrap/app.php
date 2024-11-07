@@ -22,6 +22,9 @@ foreach ($config->get('app.providers') as $provider) {
     $container->addServiceProvider(new $provider);
 }
 
+var_dump($container->get(\Laminas\Diactoros\Request::class)->getQueryParams());
+die();
+
 $app = new App();
 // register routes
 $app->run();
