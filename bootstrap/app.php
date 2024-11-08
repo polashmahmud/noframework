@@ -22,8 +22,11 @@ foreach ($config->get('app.providers') as $provider) {
     $container->addServiceProvider(new $provider);
 }
 
-var_dump($container->get(\Laminas\Diactoros\Request::class)->getQueryParams());
-die();
+$router = $container->get(\League\Route\Router::class);
+
+$router->get('/', function () {
+    var_dump('Hello World');
+});
 
 $app = new App();
 // register routes
