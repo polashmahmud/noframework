@@ -26,9 +26,9 @@ foreach ($config->get('app.providers') as $provider) {
     $container->addServiceProvider(new $provider);
 }
 
-$router = $container->get(Router::class);
+$app = new App($container);
 
-$router->get('/', function () {
+$app->getRouter()->get('/', function () {
     $response = new Response();
 
     $response->getBody()->write('<h1>Home Page</h1>');
@@ -36,11 +36,5 @@ $router->get('/', function () {
     return $response;
 });
 
-$response = $router->dispatch($container->get(Request::class));
-
-(new SapiEmitter())->emit($response);
-
-$app = new App();
-// register routes
 $app->run();
 
