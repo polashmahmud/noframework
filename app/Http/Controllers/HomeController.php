@@ -22,7 +22,12 @@ class HomeController
 
         $response->getBody()->write(
             $this->view->render('home.twig', [
-                'name' => $this->config->get('app.name')
+                'name' => $this->config->get('app.name'),
+                'users' => [
+                    ['name' => 'John Doe'],
+                    ['name' => 'Jane Doe'],
+                    ['name' => 'Mark Doe'],
+                ]
             ])
         );
 

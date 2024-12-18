@@ -2,10 +2,12 @@
 
 namespace App\Providers;
 
+use App\Config\Config;
 use App\Views\View;
 use League\Container\ServiceProvider\AbstractServiceProvider;
 use League\Container\ServiceProvider\BootableServiceProviderInterface;
 use Twig\Environment;
+use Twig\Extension\DebugExtension;
 use Twig\Loader\FilesystemLoader;
 
 class ViewServiceProvider extends AbstractServiceProvider implements BootableServiceProviderInterface
@@ -20,10 +22,14 @@ class ViewServiceProvider extends AbstractServiceProvider implements BootableSer
         $this->getContainer()->add(View::class, function () {
             $loader = new FilesystemLoader(__DIR__.'/../../resources/views');
 
+            $debug = $this->getContainer()->get(Config::class)->get('app.debug');
+
             $twig = new Environment($loader, [
                 'cache' => false,
-                'debug' => true,
+                'debug' => $debug,
             ]);
+
+            $twig->addExtension(new DebugExtension());
 
             return new View($twig);
         });
