@@ -18,11 +18,13 @@ class HomeController
 
     public function __invoke(ServerRequestInterface $request)
     {
-        var_dump($this->view);
-        die();
         $response = new Response();
 
-        $response->getBody()->write('<h1>Hello, World!</h1>');
+        $response->getBody()->write(
+            $this->view->render('home.twig', [
+                'name' => $this->config->get('app.name')
+            ])
+        );
 
         return $response;
     }
